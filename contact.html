@@ -1,136 +1,459 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Contact Us</title>
-	<link rel="stylesheet" href="style.css">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Rubik+Distressed&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Green Initiative</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-forest: #172711;
+            --vibrant-green: #1A936F;
+            --mint: #EEFFED;
+            --earth: #D4C9A8;
+            --soil: #8B7355;
+            --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--mint);
+            color: var(--deep-forest);
+            overflow-x: hidden;
+        }
+
+        /* ========== BRUTALIST/EXPRESSIVE HEADER ========== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            mix-blend-mode: difference;
+        }
+
+        .banner img {
+            height: 55px;
+            border-radius: 50%;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            color: var(--vibrant-green);
+            letter-spacing: 3px;
+        }
+
+        /* ========== PAGE HEADER ========== */
+        .page-header {
+            background: linear-gradient(135deg, var(--deep-forest) 0%, #2A4A1E 100%);
+            padding: 8rem 5% 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '✉️';
+            position: absolute;
+            font-size: 15rem;
+            bottom: -5rem;
+            right: -3rem;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        .page-header h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            color: rgba(238, 255, 237, 0.8);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1rem;
+        }
+
+        /* ========== CONTACT SECTION ========== */
+        .contact-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        /* Contact Info Cards */
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-info h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--deep-forest);
+        }
+
+        .info-cards {
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(26, 147, 111, 0.1);
+            transition: var(--transition);
+        }
+
+        .info-card:hover {
+            transform: translateX(5px);
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--vibrant-green);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+        }
+
+        .info-details h4 {
+            font-size: 0.9rem;
+            color: var(--soil);
+            margin-bottom: 0.2rem;
+        }
+
+        .info-details p, .info-details a {
+            font-size: 1rem;
+            color: var(--deep-forest);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .info-details a:hover {
+            color: var(--vibrant-green);
+        }
+
+        /* Social Links */
+        .social-links {
+            margin-top: 2rem;
+            padding-top: 1rem;
+        }
+
+        .social-links h3 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: var(--deep-forest);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background: var(--vibrant-green);
+            transform: translateY(-3px);
+        }
+
+        /* Contact Form */
+        .contact-form-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-form-container h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--deep-forest);
+        }
+
+        .form-subtitle {
+            color: var(--soil);
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--deep-forest);
+            margin-bottom: 0.3rem;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #e0e4e0;
+            border-radius: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            background: var(--mint);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--vibrant-green);
+            box-shadow: 0 0 0 3px rgba(26, 147, 111, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--vibrant-green);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            clip-path: polygon(3% 0, 100% 0, 97% 100%, 0% 100%);
+        }
+
+        .submit-btn:hover {
+            background: var(--deep-forest);
+            padding-left: 1.5rem;
+        }
+
+        /* Map Section */
+        .map-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 5% 4rem;
+        }
+
+        .map-container {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+            display: block;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--deep-forest);
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(238, 255, 237, 0.1);
+        }
+
+        footer p {
+            color: rgba(238, 255, 237, 0.6);
+            font-size: 0.8rem;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 900px) {
+            header {
+                mix-blend-mode: normal;
+                background: var(--deep-forest);
+            }
+            nav ul {
+                gap: 1rem;
+            }
+            nav ul li a {
+                font-size: 0.7rem;
+            }
+            .contact-section {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <style>
-    body{
-        background-image: url(images/pic11.jpeg);
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position: center;
-        color: black;
-    }
-    h1 {
-        font-size: 2.5em;
-        margin: 20px 0;
-        text-align: center;
-      }
-      
-      p {
-        font-size: 1.2em;
-        margin: 20px 0;
-        text-align: center;
-      }
-      
-      form {
-        max-width: 500px;
-        margin: 0 auto;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-      }
-      
-      label {
-        display: block;
-        margin-bottom: 5px;
-        font-size: 1.1em;
-      }
-      
-      input[type="text"],
-      input[type="email"],
-      textarea {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
-      }
-      
-      select {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
-        background-color: #fff;
-        color: #333;
-      }
-      
-      input[type="submit"] {
-        display: block;
-        width: 100%;
-        padding: 10px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease-in-out;
-      }
-      
-      input[type="submit"]:hover {
-        background-color: #0062cc;
-      }
-      
-      /* Responsive Styles */
-      @media only screen and (max-width: 768px) {
-        form {
-          max-width: 100%;
-        }
-      }
-</style>
-<header>
-  <a href="index.html">
-    <div class="banner">
-      <img src="logo.png" />
+
+    <header>
+        <a href="index.html">
+            <div class="banner">
+                <img src="logo.png" alt="Green Initiative Logo">
+            </div>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="donate.html">Donate</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>Let's Connect</h1>
+        <p>Have questions? Want to partner? Reach out — we'd love to hear from you</p>
     </div>
-  </a>
-<nav>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="activities.html">Activities</a></li>
-    <li><a href="contact.html">Contact</a></li>
-    <li><a href="donate.html">Donate</a></li>
-  </ul>
-</nav>
-</header>
 
-<main>
-<h1>Enquiry Form</h1>
-<p>Thank you for your interest in Green Initiative. Please use the form below to make an enquiry:</p>
-<form method="post" action="/submit-enquiry-form">
-  <label for="name">Name:</label>
-  <input type="text" id="name" name="name" required>
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email" required>
-  <label for="phone">Phone:</label>
-  <input type="text" id="phone" name="phone" required>
-  <label for="company">Company/Organization:</label>
-  <input type="text" id="company" name="company" required>
-  <label for="service">Service of Interest:</label>
-  <select id="service" name="service">
-    <option value="Partnerships">Partnerships</option>
-    <option value="Donations">Donations</option>
-  </select>
-  <label for="message">Message:</label>
-  <textarea id="message" name="message" required></textarea>
-  <input type="submit" value="Send">
-</form>
-</main>
+    <!-- Contact Section -->
+    <div class="contact-section">
+        <!-- Contact Info -->
+        <div class="contact-info">
+            <h2>Get in Touch</h2>
+            <p>We're here to answer your questions and discuss how you can get involved.</p>
+            
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="info-details">
+                        <h4>VISIT US</h4>
+                        <p>London, United Kingdom</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="info-details">
+                        <h4>EMAIL US</h4>
+                        <a href="mailto:info@greeninitiative.org">info@greeninitiative.org</a>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+                    <div class="info-details">
+                        <h4>CALL US</h4>
+                        <a href="tel:+442012345678">+44 20 1234 5678</a>
+                    </div>
+                </div>
+            </div>
 
-<footer>
-<p>&copy; Green Initiative. All rights reserved.</p>
-</footer>
+            <div class="social-links">
+                <h3>Follow Our Journey</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-container">
+            <h2>Send a Message</h2>
+            <p class="form-subtitle">We'll get back to you within 24-48 hours</p>
+            
+            <form method="post" action="/submit-enquiry-form">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="text" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="company">Company/Organization</label>
+                    <input type="text" id="company" name="company">
+                </div>
+                <div class="form-group">
+                    <label for="service">Service of Interest</label>
+                    <select id="service" name="service">
+                        <option value="Partnerships">Partnerships</option>
+                        <option value="Donations">Donations</option>
+                        <option value="Volunteering">Volunteering</option>
+                        <option value="Media Inquiry">Media Inquiry</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message →</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Map Section -->
+    <div class="map-section">
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.354634642546!2d-0.127647784229882!3d51.5072179796348!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604c7c7ec2f1d%3A0xcbef6fb92f2cd645!2sLondon%2C%20UK!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Green Initiative. Rooted in Change, Growing Together.</p>
+    </footer>
+
 </body>
 </html>

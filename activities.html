@@ -1,71 +1,407 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Green Initiative Activities</title>
-	<link rel="stylesheet" href="style.css">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Rubik+Distressed&display=swap" rel="stylesheet">
-	<style>
-		
-			 img{
-				height: 250px;
-				border-radius: 10%;
-				box-shadow: 0px 10px 20px #46f112;
-			}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Activities | Green Initiative</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-forest: #172711;
+            --vibrant-green: #1A936F;
+            --mint: #EEFFED;
+            --earth: #D4C9A8;
+            --soil: #8B7355;
+            --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--mint);
+            color: var(--deep-forest);
+            overflow-x: hidden;
+        }
+
+        /* ========== BRUTALIST/EXPRESSIVE HEADER ========== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            mix-blend-mode: difference;
+            background: transparent;
+        }
+
+        .banner img {
+            height: 55px;
+            border-radius: 50%;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            color: var(--vibrant-green);
+            letter-spacing: 3px;
+        }
+
+        /* ========== PAGE HEADER ========== */
+        .page-header {
+            background: linear-gradient(135deg, var(--deep-forest) 0%, #2A4A1E 100%);
+            padding: 8rem 5% 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '🌱';
+            position: absolute;
+            font-size: 15rem;
+            bottom: -5rem;
+            right: -3rem;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        .page-header h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            color: rgba(238, 255, 237, 0.8);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1rem;
+        }
+
+        /* ========== ACTIVITIES SECTION ========== */
+        .activities-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 5%;
+        }
+
+        .activity-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 5rem;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .activity-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px -15px rgba(26, 147, 111, 0.3);
+        }
+
+        .activity-card:nth-child(even) {
+            direction: rtl;
+        }
+
+        .activity-card:nth-child(even) .activity-content {
+            direction: ltr;
+        }
+
+        .activity-image {
+            overflow: hidden;
+            min-height: 320px;
+        }
+
+        .activity-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .activity-card:hover .activity-image img {
+            transform: scale(1.05);
+        }
+
+        .activity-content {
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .activity-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .activity-content h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--deep-forest);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .activity-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--vibrant-green);
+        }
+
+        .activity-content p {
+            line-height: 1.7;
+            color: #3A4A2A;
+            margin-top: 1rem;
+        }
+
+        /* ========== STATS HIGHLIGHT ========== */
+        .stats-highlight {
+            background: var(--deep-forest);
+            padding: 2rem 5%;
+            margin: 2rem 0;
+        }
+
+        .stats-highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stat-highlight-item {
+            border-right: 1px solid rgba(238, 255, 237, 0.15);
+        }
+
+        .stat-highlight-item:last-child {
+            border-right: none;
+        }
+
+        .stat-highlight-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--vibrant-green);
+        }
+
+        .stat-highlight-label {
+            color: rgba(238, 255, 237, 0.7);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.3rem;
+        }
+
+        /* ========== CTA SECTION ========== */
+        .cta-section {
+            text-align: center;
+            padding: 4rem 5%;
+            background: linear-gradient(135deg, var(--vibrant-green) 0%, #146B50 100%);
+            margin-top: 2rem;
+        }
+
+        .cta-section h3 {
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: rgba(238, 255, 237, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--deep-forest);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
+        }
+
+        .cta-btn:hover {
+            background: #0A1A08;
+            padding-left: 3rem;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--deep-forest);
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(238, 255, 237, 0.1);
+        }
+
+        footer p {
+            color: rgba(238, 255, 237, 0.6);
+            font-size: 0.8rem;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 900px) {
+            header {
+                mix-blend-mode: normal;
+                background: var(--deep-forest);
+            }
+            nav ul {
+                gap: 1rem;
+            }
+            nav ul li a {
+                font-size: 0.7rem;
+            }
+            .activity-card {
+                grid-template-columns: 1fr;
+                direction: ltr !important;
+            }
+            .activity-card:nth-child(even) .activity-content {
+                direction: ltr;
+            }
+            .stats-highlight-grid {
+                grid-template-columns: 1fr;
+            }
+            .stat-highlight-item {
+                border-right: none;
+                border-bottom: 1px solid rgba(238, 255, 237, 0.1);
+                padding-bottom: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-	<header>
-		<a href="index.html">
-			<div class="banner">
-				<img src="logo.png" />
-			</div>
-		</a>
-		<nav>
-			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="about.html">About</a></li>
-				<li><a href="activities.html">Activities</a></li>
-				<li><a href="contact.html">Contact</a></li>
-				<li><a href="donate.html">Donate</a></li>
-			</ul>
-		</nav>
-	</header>
 
-	<main>
-		<h1>Green Initiative Activities</h1>
-		<section>
-			<img src="images/pic10.jpg" alt="2">
-			<h2>Watershed Based Approach</h2>
-			<p>Using Watershed Based Approach, communities help to conserve biodiversity, restore 
-				ecosystems, and reduce the impact of climate change. The green initiative  relies 
-				on its network of over 500 community groups to deliver its watershed based approach. 
-				At the grassroots level, Green initatives goal is to create climate resilient 
-				communities through restoration and protection of forest watersheds creating 
-				sustainable livelihoods for communities across .	</p>
-		</section>
+    <header>
+        <a href="index.html">
+            <div class="banner">
+                <img src="logo.png" alt="Green Initiative Logo">
+            </div>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="donate.html">Donate</a></li>
+            </ul>
+        </nav>
+    </header>
 
-		<section>
-			<img src="images/gabage.png" alt="3">
-			<h2>Community Waste Collection</h2>
-			<p>Community waste collection is a critical aspect of maintaining a clean and sustainable environment.Community waste collection is a fundamental practice that reflects our collective environmental responsibility, ensuring the proper disposal and management of waste to safeguard our ecosystems</p>
-		</section>
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>Our Impact in Action</h1>
+        <p>From watershed restoration to community waste collection — see how we're making a difference</p>
+    </div>
 
-		<section>
-			<img src="images/pic9.jpg" alt="1">
-			<h2>Planting trees</h2>
-			<p>
-				The movement's initiatives include tree planting campaigns, waste management 
-				programs, and the promotion of renewable energy sources with recent initiatives being engaging in tree planting exercises and so far 500,000 seedlings have been planted. Since the 1800s, human activities have been the main driver of climate change, primarily due to the burning of fossil fuels like coal, oil and gas. Burning fossil fuels generates greenhouse gas emissions that act like a blanket wrapped around the Earth, trapping the sun’s heat and raising temperatures. 
-				The consequences of climate change now include, among others, intense droughts, water scarcity, severe fires, rising sea levels, flooding, melting polar ice, catastrophic storms and declining bio diversity 
-				</p>
-		</section>
-	</main>
+    <!-- Stats Highlight -->
+    <div class="stats-highlight">
+        <div class="stats-highlight-grid">
+            <div class="stat-highlight-item">
+                <div class="stat-highlight-number">500K+</div>
+                <div class="stat-highlight-label">Seedlings Planted</div>
+            </div>
+            <div class="stat-highlight-item">
+                <div class="stat-highlight-number">500+</div>
+                <div class="stat-highlight-label">Community Groups</div>
+            </div>
+            <div class="stat-highlight-item">
+                <div class="stat-highlight-number">15+</div>
+                <div class="stat-highlight-label">Watersheds Restored</div>
+            </div>
+        </div>
+    </div>
 
-	<footer>
-		<p>&copy; Green Initiative All rights reserved.</p>
-	</footer>
+    <!-- Activities Section -->
+    <div class="activities-section">
+
+        <!-- Activity 1 - Watershed Based Approach -->
+        <div class="activity-card">
+            <div class="activity-image">
+                <img src="images/pic10.jpg" alt="Watershed Based Approach">
+            </div>
+            <div class="activity-content">
+                <div class="activity-icon">💧</div>
+                <h2>Watershed Based Approach</h2>
+                <p>Using Watershed Based Approach, communities help to conserve biodiversity, restore ecosystems, and reduce the impact of climate change. The Green Initiative relies on its network of over 500 community groups to deliver its watershed based approach. At the grassroots level, Green Initiative's goal is to create climate resilient communities through restoration and protection of forest watersheds, creating sustainable livelihoods for communities across Africa.</p>
+            </div>
+        </div>
+
+        <!-- Activity 2 - Community Waste Collection -->
+        <div class="activity-card">
+            <div class="activity-image">
+                <img src="images/gabage.png" alt="Community Waste Collection">
+            </div>
+            <div class="activity-content">
+                <div class="activity-icon">♻️</div>
+                <h2>Community Waste Collection</h2>
+                <p>Community waste collection is a critical aspect of maintaining a clean and sustainable environment. Community waste collection is a fundamental practice that reflects our collective environmental responsibility, ensuring the proper disposal and management of waste to safeguard our ecosystems for future generations.</p>
+            </div>
+        </div>
+
+        <!-- Activity 3 - Planting Trees -->
+        <div class="activity-card">
+            <div class="activity-image">
+                <img src="images/pic9.jpg" alt="Planting Trees">
+            </div>
+            <div class="activity-content">
+                <div class="activity-icon">🌳</div>
+                <h2>Planting Trees</h2>
+                <p>The movement's initiatives include tree planting campaigns, waste management programs, and the promotion of renewable energy sources — with recent initiatives engaging in tree planting exercises. So far, 500,000 seedlings have been planted. Since the 1800s, human activities have been the main driver of climate change, primarily due to the burning of fossil fuels like coal, oil and gas. Burning fossil fuels generates greenhouse gas emissions that act like a blanket wrapped around the Earth, trapping the sun's heat and raising temperatures. The consequences of climate change now include intense droughts, water scarcity, severe fires, rising sea levels, flooding, melting polar ice, catastrophic storms and declining biodiversity.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <h3>Want to get involved?</h3>
+        <p>Join our community of volunteers and help us create a greener, healthier Africa</p>
+        <a href="donate.html" class="cta-btn">Support Our Work →</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Green Initiative. Rooted in Change, Growing Together.</p>
+    </footer>
+
 </body>
 </html>

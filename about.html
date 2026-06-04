@@ -1,48 +1,533 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title> About Green initiative</title>
-	<link rel="stylesheet" href="style.css">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Rubik+Distressed&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Green Initiative</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-forest: #172711;
+            --vibrant-green: #1A936F;
+            --mint: #EEFFED;
+            --earth: #D4C9A8;
+            --soil: #8B7355;
+            --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--mint);
+            color: var(--deep-forest);
+            overflow-x: hidden;
+        }
+
+        /* ========== BRUTALIST/EXPRESSIVE HEADER ========== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            mix-blend-mode: difference;
+        }
+
+        .banner img {
+            height: 55px;
+			border-radius: 50%;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            color: var(--vibrant-green);
+            letter-spacing: 3px;
+        }
+
+        /* ========== PAGE HEADER ========== */
+        .page-header {
+            background: linear-gradient(135deg, var(--deep-forest) 0%, #2A4A1E 100%);
+            padding: 8rem 5% 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '🌱';
+            position: absolute;
+            font-size: 15rem;
+            bottom: -5rem;
+            right: -3rem;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        .page-header h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            color: rgba(238, 255, 237, 0.8);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* ========== CONTENT SECTIONS ========== */
+        .content-section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-divider {
+            width: 80px;
+            height: 3px;
+            background: var(--vibrant-green);
+            margin: 0 auto 2rem;
+        }
+
+        .mission-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 5rem;
+        }
+
+        .mission-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--deep-forest);
+            position: relative;
+            display: inline-block;
+        }
+
+        .mission-text h2::before {
+            content: '✦';
+            color: var(--vibrant-green);
+            position: absolute;
+            left: -2rem;
+            top: 0;
+            font-size: 1.5rem;
+        }
+
+        .mission-text p {
+            line-height: 1.8;
+            color: #2A3A1E;
+            margin-bottom: 1rem;
+        }
+
+        .mission-icon {
+            background: var(--deep-forest);
+            padding: 2rem;
+            border-radius: 4px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-icon::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(26, 147, 111, 0.2), transparent);
+            transition: 0.6s;
+        }
+
+        .mission-icon:hover::after {
+            left: 100%;
+        }
+
+        .mission-icon i {
+            font-size: 4rem;
+            color: var(--vibrant-green);
+            margin-bottom: 1rem;
+        }
+
+        .mission-icon h3 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .mission-icon p {
+            color: rgba(238, 255, 237, 0.7);
+            font-size: 0.85rem;
+        }
+
+        /* ========== STATS GRID ========== */
+        .stats-section {
+            background: var(--deep-forest);
+            padding: 5rem 5%;
+            margin: 3rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stat-item {
+            border-right: 1px solid rgba(238, 255, 237, 0.15);
+        }
+
+        .stat-item:last-child {
+            border-right: none;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--vibrant-green);
+            line-height: 1;
+        }
+
+        .stat-label {
+            color: rgba(238, 255, 237, 0.7);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+        }
+
+        /* ========== VISION BLOCK ========== */
+        .vision-block {
+            background: linear-gradient(135deg, var(--vibrant-green) 0%, #146B50 100%);
+            padding: 4rem;
+            border-radius: 24px;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vision-block::before {
+            content: '🌍';
+            position: absolute;
+            font-size: 12rem;
+            bottom: -3rem;
+            right: -2rem;
+            opacity: 0.1;
+        }
+
+        .vision-block h2 {
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .vision-block p {
+            color: rgba(238, 255, 237, 0.9);
+            line-height: 1.8;
+            font-size: 1.1rem;
+            max-width: 80%;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ========== VALUES SECTION ========== */
+        .values-section {
+            padding: 4rem 0;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(26, 147, 111, 0.1);
+        }
+
+        .value-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--vibrant-green);
+            box-shadow: 0 20px 35px -12px rgba(26, 147, 111, 0.2);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--deep-forest);
+        }
+
+        .value-card p {
+            font-size: 0.85rem;
+            color: #5A6B4A;
+            line-height: 1.6;
+        }
+
+        /* ========== TIMELINE ========== */
+        .timeline-section {
+            background: var(--mint);
+            padding: 4rem 0;
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: var(--vibrant-green);
+            opacity: 0.3;
+        }
+
+        .timeline-item {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            background: var(--mint);
+            padding: 0 1rem;
+        }
+
+        .timeline-year {
+            width: 60px;
+            height: 60px;
+            background: var(--vibrant-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+            font-size: 1.2rem;
+        }
+
+        .timeline-text {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--deep-forest);
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--deep-forest);
+            padding: 3rem 5% 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(238, 255, 237, 0.1);
+        }
+
+        footer p {
+            color: rgba(238, 255, 237, 0.6);
+            font-size: 0.8rem;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 900px) {
+            nav ul {
+                gap: 1rem;
+            }
+            nav ul li a {
+                font-size: 0.7rem;
+            }
+            .mission-block {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .stat-item {
+                border-right: none;
+                border-bottom: 1px solid rgba(238, 255, 237, 0.1);
+                padding-bottom: 1.5rem;
+            }
+            .vision-block p {
+                max-width: 100%;
+            }
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            .timeline {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .timeline::before {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-	<header>
-		<a href="index.html">
-			<div class="banner">
-				<img src="logo.png" />
-			</div>
-		</a>
-		<nav>
-			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="about.html">About</a></li>
-				<li><a href="activities.html">Activities</a></li>
-				<li><a href="contact.html">Contact</a></li>
-				<li><a href="donate.html">Donate</a></li>
-			</ul>
-		</nav>
-	</header>
 
-	<main>
-		<h1>About Green Inititive </h1>
-		<p>Climate change poses an existential threat to Africa's fragile ecosystems and the 
-			communities that depend on them. The Green Initiative recognizes the urgency 
-			of this crisis and is committed to mitigating its impact through sustainable practices and 
-			environmental education.</p>
-			
-			
-		<h2>Our Mission</h2>
-		<p>Our goal is to improve the environment in our community by working with area businesses, community leaders and our neighbors to create a clean and safe place to live and work. We are committed to a sustainable future and to improving the social, economic and environmental well being of the community.</p>
+    <header>
+        <a href="index.html" class="banner">
+            <img src="logo.png" alt="Green Initiative Logo">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="donate.html">Donate</a></li>
+            </ul>
+        </nav>
+    </header>
 
-		<h2>Our Vision</h2>
-		<p>In envisioning a sustainable future, 'Green Initiative' aspires to create a community where ecological balance, environmental consciousness, and human well-being coalesce. Our initiative seeks to foster a harmonious relationship between people and the planet, forging a path towards a greener, healthier, and more resilient community</p>
-	</main>
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>About Us</h1>
+        <p>Rooted in change, growing together — discover who we are and what drives us</p>
+    </div>
 
-	<footer>
-		<p>&copy; 2023 Green Initiative. All rights reserved.</p>
-	</footer>
+    <!-- Main Content -->
+    <main>
+        <div class="content-section">
+            <!-- Mission Block -->
+            <div class="mission-block">
+                <div class="mission-text">
+                    <h2>Our Mission</h2>
+                    <p>Climate change poses an existential threat to Africa's fragile ecosystems and the communities that depend on them. The Green Initiative recognizes the urgency of this crisis and is committed to mitigating its impact through sustainable practices and environmental education.</p>
+                    <p>Our goal is to improve the environment in our community by working with area businesses, community leaders and our neighbors to create a clean and safe place to live and work. We are committed to a sustainable future and to improving the social, economic and environmental well being of the community.</p>
+                </div>
+                <div class="mission-icon">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Since 2017</h3>
+                    <p>Over 7 years of dedicated climate action across Africa</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">7+</div>
+                    <div class="stat-label">Years Active</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Projects</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10K+</div>
+                    <div class="stat-label">Trees Planted</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Volunteers</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <!-- Vision Block -->
+            <div class="vision-block">
+                <h2>Our Vision</h2>
+                <p>In envisioning a sustainable future, 'Green Initiative' aspires to create a community where ecological balance, environmental consciousness, and human well-being coalesce. Our initiative seeks to foster a harmonious relationship between people and the planet, forging a path towards a greener, healthier, and more resilient community.</p>
+            </div>
+
+            <!-- Values Section -->
+            <div class="values-section">
+                <div class="section-divider"></div>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">🌱</div>
+                        <h3>Sustainability</h3>
+                        <p>We believe in practices that meet present needs without compromising future generations.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🤝</div>
+                        <h3>Community</h3>
+                        <p>We work alongside local communities, empowering them to lead environmental change.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">📚</div>
+                        <h3>Education</h3>
+                        <p>Knowledge is power. We educate to create lasting environmental awareness.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline Section -->
+            <div class="timeline-section">
+                <div class="section-divider"></div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2017</div>
+                        <div class="timeline-text">Founded in London</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2019</div>
+                        <div class="timeline-text">First African Project</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2021</div>
+                        <div class="timeline-text">10K Trees Milestone</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024</div>
+                        <div class="timeline-text">Expanded to 15 Communities</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Green Initiative. Rooted in Change, Growing Together.</p>
+    </footer>
+
 </body>
 </html>

@@ -1,178 +1,536 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Green Initiative donate form</title>
-	<link rel="stylesheet" href="style.css">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Rubik+Distressed&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Us | Green Initiative</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-forest: #172711;
+            --vibrant-green: #1A936F;
+            --mint: #EEFFED;
+            --earth: #D4C9A8;
+            --soil: #8B7355;
+            --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--mint);
+            color: var(--deep-forest);
+            overflow-x: hidden;
+        }
+
+        /* ========== BRUTALIST/EXPRESSIVE HEADER ========== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            mix-blend-mode: difference;
+        }
+
+        .banner img {
+            height: 55px;
+            border-radius: 50%;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            color: var(--vibrant-green);
+            letter-spacing: 3px;
+        }
+
+        /* ========== PAGE HEADER ========== */
+        .page-header {
+            background: linear-gradient(135deg, var(--deep-forest) 0%, #2A4A1E 100%);
+            padding: 8rem 5% 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '❤️';
+            position: absolute;
+            font-size: 15rem;
+            bottom: -5rem;
+            right: -3rem;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        .page-header h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            color: rgba(238, 255, 237, 0.8);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1rem;
+        }
+
+        /* ========== DONATE SECTION ========== */
+        .donate-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        /* Impact Card */
+        .impact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .impact-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--deep-forest);
+        }
+
+        .impact-stats {
+            margin: 2rem 0;
+        }
+
+        .impact-stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(26, 147, 111, 0.1);
+        }
+
+        .impact-stat span:first-child {
+            font-weight: 500;
+        }
+
+        .impact-stat span:last-child {
+            font-weight: 700;
+            color: var(--vibrant-green);
+            font-size: 1.2rem;
+        }
+
+        .impact-message {
+            background: var(--mint);
+            padding: 1.5rem;
+            border-radius: 16px;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .impact-message p {
+            font-style: italic;
+            color: var(--deep-forest);
+        }
+
+        /* Donation Options */
+        .donation-options {
+            background: white;
+            padding: 2rem;
+            border-radius: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .donation-options h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--deep-forest);
+        }
+
+        .donation-subtitle {
+            color: var(--soil);
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        .amount-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .amount-btn {
+            padding: 0.8rem;
+            background: var(--mint);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--deep-forest);
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .amount-btn:hover {
+            border-color: var(--vibrant-green);
+            transform: translateY(-2px);
+        }
+
+        .custom-amount {
+            margin-bottom: 1.5rem;
+        }
+
+        .custom-amount input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #e0e4e0;
+            border-radius: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+        }
+
+        .custom-amount input:focus {
+            outline: none;
+            border-color: var(--vibrant-green);
+        }
+
+        .donate-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--vibrant-green);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            clip-path: polygon(3% 0, 100% 0, 97% 100%, 0% 100%);
+            margin-bottom: 1rem;
+        }
+
+        .donate-btn:hover {
+            background: var(--deep-forest);
+            padding-left: 1.5rem;
+        }
+
+        .payment-methods {
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(26, 147, 111, 0.1);
+        }
+
+        .payment-methods p {
+            font-size: 0.7rem;
+            color: var(--soil);
+            margin-bottom: 0.5rem;
+        }
+
+        .payment-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+            color: var(--soil);
+        }
+
+        /* Partnership Section */
+        .partnership-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 5% 4rem;
+        }
+
+        .partnership-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .partnership-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--deep-forest);
+        }
+
+        .partnership-subtitle {
+            color: var(--soil);
+            margin-bottom: 1.5rem;
+        }
+
+        .partner-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .partner-form .full-width {
+            grid-column: span 2;
+        }
+
+        .partner-form input,
+        .partner-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #e0e4e0;
+            border-radius: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .partner-form input:focus,
+        .partner-form textarea:focus {
+            outline: none;
+            border-color: var(--vibrant-green);
+        }
+
+        .partner-btn {
+            padding: 0.8rem;
+            background: var(--deep-forest);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .partner-btn:hover {
+            background: var(--vibrant-green);
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--deep-forest);
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(238, 255, 237, 0.1);
+        }
+
+        footer p {
+            color: rgba(238, 255, 237, 0.6);
+            font-size: 0.8rem;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 900px) {
+            header {
+                mix-blend-mode: normal;
+                background: var(--deep-forest);
+            }
+            nav ul {
+                gap: 1rem;
+            }
+            nav ul li a {
+                font-size: 0.7rem;
+            }
+            .donate-section {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .partner-form {
+                grid-template-columns: 1fr;
+            }
+            .partner-form .full-width {
+                grid-column: span 1;
+            }
+            .amount-buttons {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
 </head>
 <body>
-    <style>
-        body{
-            background-image: url(images/pic11.jpeg);
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center;
-            color: black;
-        }
-        h1 {
-            font-size: 2.5em;
-            margin: 20px 0;
-            text-align: center;
-          }
-          
-          p {
-            font-size: 1.2em;
-            margin: 20px 0;
-            text-align: center;
-          }
-          
-          form {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-          }
-          
-          label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 1.1em;
-          }
-          
-          input[type="text"],
-          input[type="email"],
-          textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-          }
-          
-          select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-            background-color: #fff;
-            color: #333;
-          }
-          
-          input[type="submit"] {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease-in-out;
-          }
-          
-          input[type="submit"]:hover {
-            background-color: #0062cc;
-          }
-          
-          /* Responsive Styles */
-          @media only screen and (max-width: 768px) {
-            form {
-              max-width: 100%;
-            }
-          }
-    </style>
-	<header>
-    <a href="index.html">
-			<div class="banner">
-				<img src="logo.png" />
-			</div>
-		</a>
-		<nav>
-			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="about.html">About</a></li>
-				<li><a href="activities.html">Activities</a></li>
-				<li><a href="contact.html">Contact</a></li>
-				<li><a href="donate.html">Donate</a></li>
-			</ul>
-		</nav>
-	</header>
-<style>
-  h1 {
-    font-size: 2em;
-  }
-  
-  h2 {
-    font-size: 1.5em;
-    margin-top: 2em;
-  }
-  
-  form {
-    margin-top: 1em;
-  }
-  
-  label {
-    display: block;
-    margin-top: 1em;
-  }
-  
-  input[type="text"],
-  input[type="email"],
-  textarea {
-    width: 100%;
-    padding: 0.5em;
-    border-radius: 0.25em;
-    border: 1px solid #ccc;
-  }
-  
-  button[type="submit"] {
-    background-color: #003366;
-    color: #fff;
-    padding: 0.5em 1em;
-    border: none;
-    border-radius: 0.25em;
-    cursor: pointer;
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #00254d;
-  }
-</style>
-  <main>
-    <h1>Get Involved / Donate</h1>
-    <p>Thank you for considering a donation to Green Initiative. Your gift will accelerate efforts to stabilize the climate and create a vital planet for everyone.</p>
-    <h2>Make a Donation</h2>
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-      <input type="hidden" name="cmd" value="_s-xclick">
-      <input type="hidden" name="hosted_button_id" value="XXXXXXXXXXXXX">
-      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="Donate with PayPal">
-      <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-    </form>
-    <h2>Become a Partner</h2>
-    <p>If you are interested in partnering with Green Initiative  help environmental and climate conservation, please fill out the form below:</p>
-    <form>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required>
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-      <label for="organization">Organization:</label>
-      <input type="text" id="organization" name="organization" required>
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" required></textarea>
-      <button type="submit">Submit</button>
-    </form>
-  </main>
 
-	<footer>
-		<p>&copy; 2023 Green Initiative. All rights reserved.</p>
-	</footer>
+    <header>
+        <a href="index.html">
+            <div class="banner">
+                <img src="logo.png" alt="Green Initiative Logo">
+            </div>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="donate.html">Donate</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>Support Our Mission</h1>
+        <p>Your generosity fuels climate action across Africa. Every contribution makes a difference.</p>
+    </div>
+
+    <!-- Donate Section -->
+    <div class="donate-section">
+        <!-- Impact Card -->
+        <div class="impact-card">
+            <h2>Where Your Money Goes</h2>
+            <div class="impact-stats">
+                <div class="impact-stat">
+                    <span>🌱 Tree Planting</span>
+                    <span>45%</span>
+                </div>
+                <div class="impact-stat">
+                    <span>📚 Environmental Education</span>
+                    <span>25%</span>
+                </div>
+                <div class="impact-stat">
+                    <span>♻️ Waste Management</span>
+                    <span>15%</span>
+                </div>
+                <div class="impact-stat">
+                    <span>💧 Watershed Restoration</span>
+                    <span>15%</span>
+                </div>
+            </div>
+            <div class="impact-message">
+                <p>"Your KSh 500 plants 10 trees. Your KSh 2,000 educates a classroom. Every gift multiplies."</p>
+            </div>
+            <div class="impact-stats">
+                <div class="impact-stat">
+                    <span>✅ Tax Deductible</span>
+                    <span>🇰🇪 / 🇬🇧</span>
+                </div>
+                <div class="impact-stat">
+                    <span>📊 100% Transparency</span>
+                    <span>✓ Annual Reports</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Donation Options -->
+        <div class="donation-options">
+            <h2>Make a Donation</h2>
+            <p class="donation-subtitle">Choose an amount or enter your own</p>
+            
+            <div class="amount-buttons">
+                <div class="amount-btn" onclick="setAmount(500)">KSh 500</div>
+                <div class="amount-btn" onclick="setAmount(1000)">KSh 1,000</div>
+                <div class="amount-btn" onclick="setAmount(2500)">KSh 2,500</div>
+                <div class="amount-btn" onclick="setAmount(5000)">KSh 5,000</div>
+                <div class="amount-btn" onclick="setAmount(10000)">KSh 10,000</div>
+                <div class="amount-btn" onclick="setAmount(25000)">KSh 25,000</div>
+            </div>
+            
+            <div class="custom-amount">
+                <input type="number" id="customAmount" placeholder="Custom amount (KSh)" onchange="setCustomAmount()">
+            </div>
+            
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" id="donateForm">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="hosted_button_id" value="XXXXXXXXXXXXX">
+                <input type="hidden" name="amount" id="donationAmount" value="1000">
+                <button type="submit" class="donate-btn">Donate Now →</button>
+            </form>
+            
+            <div class="payment-methods">
+                <p>Secure payments via</p>
+                <div class="payment-icons">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-amex"></i>
+                    <i class="fab fa-paypal"></i>
+                    <i class="fab fa-cc-stripe"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Partnership Section -->
+    <div class="partnership-section">
+        <div class="partnership-card">
+            <h2>Become a Partner</h2>
+            <p class="partnership-subtitle">Join us in creating lasting environmental change across Africa</p>
+            
+            <form class="partner-form" id="partnerForm">
+                <input type="text" id="partnerName" placeholder="Full Name *" required>
+                <input type="email" id="partnerEmail" placeholder="Email Address *" required>
+                <input type="text" id="partnerOrg" placeholder="Organization *" required>
+                <input type="text" id="partnerPhone" placeholder="Phone Number">
+                <textarea id="partnerMessage" rows="4" placeholder="Tell us about how you'd like to partner with us..." class="full-width" required></textarea>
+                <button type="submit" class="partner-btn full-width">Submit Partnership Inquiry →</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Green Initiative. Rooted in Change, Growing Together.</p>
+    </footer>
+
+    <script>
+        function setAmount(amount) {
+            document.getElementById('customAmount').value = '';
+            document.getElementById('donationAmount').value = amount;
+            
+            // Visual feedback
+            const btns = document.querySelectorAll('.amount-btn');
+            btns.forEach(btn => {
+                btn.style.background = '';
+                btn.style.color = '';
+            });
+            event.target.style.background = 'var(--vibrant-green)';
+            event.target.style.color = 'white';
+        }
+        
+        function setCustomAmount() {
+            const customAmount = document.getElementById('customAmount').value;
+            if (customAmount > 0) {
+                document.getElementById('donationAmount').value = customAmount;
+                
+                // Reset button highlights
+                const btns = document.querySelectorAll('.amount-btn');
+                btns.forEach(btn => {
+                    btn.style.background = '';
+                    btn.style.color = '';
+                });
+            }
+        }
+        
+        // Handle partner form submission
+        document.getElementById('partnerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your partnership inquiry! Our team will contact you within 48 hours.');
+            this.reset();
+        });
+    </script>
 </body>
 </html>
